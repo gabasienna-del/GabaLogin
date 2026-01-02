@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
  fun post(url:String, body:JSONObject, cb:(JSONObject)->Unit){
   Thread{
-   val r=OkHttpClient().newCall(
+   val r=Net.client.newCall(
     Request.Builder().url(url)
      .post(RequestBody.create("application/json".toMediaTypeOrNull(),body.toString()))
      .build()

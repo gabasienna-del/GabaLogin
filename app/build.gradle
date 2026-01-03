@@ -4,33 +4,23 @@ plugins {
 
 android {
     namespace "com.laibandis.gaba"
-    compileSdk 34
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.laibandis.gaba"
         minSdk 23
-        targetSdk 34
+        targetSdk 33
         versionCode 1
         versionName "1.0"
-    }
-
-    signingConfigs {
-        release {
-            storeFile file("release.jks")
-            storePassword "123456"
-            keyAlias "gaba"
-            keyPassword "123456"
-        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            signingConfig signingConfigs.release
         }
     }
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }

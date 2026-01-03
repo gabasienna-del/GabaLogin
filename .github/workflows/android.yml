@@ -1,4 +1,4 @@
-name: Build signed APK
+name: Build APK
 
 on:
   push:
@@ -7,20 +7,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
-
       - run: chmod +x ./gradlew
-
       - run: ./gradlew assembleRelease
-
       - uses: actions/upload-artifact@v4
         with:
-          name: GabaLogin-release
-          path: app/build/outputs/apk/release/app-release.apk
+          name: GabaLogin
+          path: app/build/outputs/apk/release/*.apk

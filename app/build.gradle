@@ -1,17 +1,16 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
     namespace "com.laibandis.gaba"
-
-    compileSdk 34     // ← ВАЖНО
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.laibandis.gaba"
         minSdk 23
-        targetSdk 30   // Android 11
+        targetSdk 30
         versionCode 1
         versionName "1.0"
     }
@@ -21,6 +20,15 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled false
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
 

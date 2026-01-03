@@ -1,35 +1,29 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
 }
 
 android {
-    namespace 'com.laibandis.gaba'
-    compileSdk 34
+    namespace "com.laibandis.gaba"
+    compileSdk 30
 
     defaultConfig {
         applicationId "com.laibandis.gaba"
         minSdk 23
-        targetSdk 34
+        targetSdk 30
         versionCode 1
         versionName "1.0"
     }
 
     buildTypes {
         release {
+            signingConfig signingConfigs.debug
             minifyEnabled false
-            signingConfig null
         }
     }
-}
-
-repositories {
-    google()
-    mavenCentral()
 }
 
 dependencies {
     implementation "androidx.appcompat:appcompat:1.6.1"
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.10"
 }

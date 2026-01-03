@@ -5,12 +5,13 @@ plugins {
 
 android {
     namespace "com.laibandis.gaba"
-    compileSdk 30
+
+    compileSdk 34     // ← ВАЖНО
 
     defaultConfig {
         applicationId "com.laibandis.gaba"
         minSdk 23
-        targetSdk 30
+        targetSdk 30   // Android 11
         versionCode 1
         versionName "1.0"
     }

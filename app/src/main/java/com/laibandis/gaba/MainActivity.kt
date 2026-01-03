@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
   Thread{
    val r=Net.client.newCall(
     Request.Builder().url(url)
-     .post(RequestBody.create("application/json".toMediaType(),body.toString()))
+     .post(body.toString().toRequestBody("application/json".toMediaType()))
      .build()
    ).execute().body!!.string()
    runOnUiThread{cb(JSONObject(r))}

@@ -15,33 +15,29 @@ android {
         versionName "1.0"
     }
 
+    signingConfigs {
+        auto {
+            storeFile file("$rootDir/auto.jks")
+            storePassword "auto123"
+            keyAlias "auto"
+            keyPassword "auto123"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.auto
         }
     }
+}
+
+repositories {
+    google()
+    mavenCentral()
 }
 
 dependencies {
     implementation "androidx.appcompat:appcompat:1.6.1"
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
-}
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-}
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-}
-
-android {
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
 }

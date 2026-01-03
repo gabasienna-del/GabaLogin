@@ -1,2 +1,19 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        google()
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://repo.maven.apache.org/maven2' }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        mavenCentral()
+        google()
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://repo.maven.apache.org/maven2' }
+    }
+}
 rootProject.name = "GabaLogin"
-include ':app'
+include(":app")

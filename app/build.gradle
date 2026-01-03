@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.laibandis.gaba'
+    namespace "com.laibandis.gaba"
     compileSdk 34
 
     defaultConfig {
@@ -24,26 +24,12 @@ android {
         jvmTarget = "17"
     }
 
-    signingConfigs {
-        auto {
-            storeFile file("$rootDir/auto.jks")
-            storePassword "auto123"
-            keyAlias "auto"
-            keyPassword "auto123"
-        }
-    }
-
     buildTypes {
         release {
             minifyEnabled false
-            signingConfig signingConfigs.auto
+            signingConfig null     // ← будет app-release-unsigned.apk
         }
     }
-}
-
-repositories {
-    google()
-    mavenCentral()
 }
 
 dependencies {

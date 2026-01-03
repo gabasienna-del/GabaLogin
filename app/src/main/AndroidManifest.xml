@@ -1,11 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.laibandis.gaba">
 
-    <application
-        android:label="Gaba Login"
-        android:allowBackup="true">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
-        <activity android:name=".MainActivity"
+    <application
+        android:name=".App"
+        android:label="Gaba Login"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
 
             <intent-filter>
@@ -14,6 +19,5 @@
             </intent-filter>
 
         </activity>
-
     </application>
 </manifest>

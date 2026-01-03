@@ -4,30 +4,28 @@ plugins {
 }
 
 android {
-    namespace "com.laibandis.gaba"
+    namespace 'com.laibandis.gaba'
     compileSdk 34
 
     defaultConfig {
         applicationId "com.laibandis.gaba"
         minSdk 23
-        targetSdk 30
+        targetSdk 34
         versionCode 1
         versionName "1.0"
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
             minifyEnabled false
+            signingConfig null
         }
     }
+}
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-
-    kotlinOptions { jvmTarget = "17" }
+repositories {
+    google()
+    mavenCentral()
 }
 
 dependencies {

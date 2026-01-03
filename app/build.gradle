@@ -1,11 +1,11 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
 }
 
 android {
     namespace "com.laibandis.gaba"
-    compileSdk 34
+    compileSdk 30
 
     defaultConfig {
         applicationId "com.laibandis.gaba"
@@ -19,9 +19,6 @@ android {
         release {
             signingConfig signingConfigs.debug
             minifyEnabled false
-        }
-        debug {
-            signingConfig signingConfigs.debug
         }
     }
 }

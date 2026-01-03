@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -9,18 +9,18 @@ android {
 
     defaultConfig {
         applicationId "com.laibandis.gaba"
-        minSdk 26
+        minSdk 23
         targetSdk 34
-        versionCode 5
-        versionName "1.4"
+        versionCode 1
+        versionName "1.0"
     }
 
     signingConfigs {
         release {
             storeFile file("gaba.jks")
-            storePassword "gaba123"
+            storePassword "123456"
             keyAlias "gaba"
-            keyPassword "gaba123"
+            keyPassword "123456"
         }
     }
 
@@ -30,16 +30,9 @@ android {
             minifyEnabled false
         }
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions { jvmTarget = "17" }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core-ktx:1.12.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.squareup.okhttp3:okhttp:4.12.0"
 }

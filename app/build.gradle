@@ -16,10 +16,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("release.jks")
-            storePassword "123456"
+            storeFile file("../keystore.jks")
+            storePassword "gabalogin"
             keyAlias "gaba"
-            keyPassword "123456"
+            keyPassword "gabalogin"
         }
     }
 
@@ -31,7 +31,12 @@ android {
     }
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
 
 dependencies {
     implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.squareup.okhttp3:okhttp:4.12.0"
 }

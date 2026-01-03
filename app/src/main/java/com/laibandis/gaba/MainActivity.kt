@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var log: TextView
     var authId = ""
 
-    val CAS = "https://cas-gw-cf.euce1.gabaapp.com"
+    val CAS = "https://cas-gw-cf.euce1.indriverapp.com"
     val APP_ID = "com.laibandis.gaba"
 
     override fun onCreate(b: Bundle?) {

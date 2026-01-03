@@ -3,8 +3,8 @@ package com.laibandis.gaba
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.security.MessageDigest
@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var code: EditText
     lateinit var log: TextView
     var authId = ""
-
     val CAS = "https://cas-gw-cf.euce1.gabaapp.com"
 
     override fun onCreate(b: Bundle?) {
@@ -31,10 +30,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.check).setOnClickListener { checkCode() }
     }
 
-    fun md5(s: String) = MessageDigest.getInstance("MD5")
-        .digest(s.toByteArray())
-        .joinToString("") { "%02x".format(it) }
-        .substring(0,16)
+    fun md5(s: String) = MessageDigest.getInstance("MD5").digest(s.toByteArray())
+        .joinToString("") { "%02x".format(it) }.substring(0,16)
 
     fun requestCode() {
         val dev = System.currentTimeMillis().toString() + Random.nextLong()
@@ -47,10 +44,8 @@ class MainActivity : AppCompatActivity() {
             put("android_id", md5(dev))
         }
         post("$CAS/api/authorization", j) {
-            authId = it.getJSONObject("response")
-                .getJSONArray("items")
-                .getJSONObject(0)
-                .getString("auth_id")
+            authId = it.getJSONObject("response").getJSONArray("items")
+                .getJSONObject(0).getString("auth_id")
             log.text = "Код отправлен"
         }
     }
@@ -62,18 +57,16 @@ class MainActivity : AppCompatActivity() {
             put("app_id", "com.laibandis.gaba")
             put("platform", "android")
         }
-        post("$CAS/api/v2/checkauthcode", j) {
-            log.text = it.toString(2)
-        }
+        post("$CAS/api/v2/checkauthcode", j) { log.text = it.toString(2) }
     }
 
     fun post(url:String, body:JSONObject, cb:(JSONObject)->Unit) {
         Thread {
-            val req = Request.Builder()
-                .url(url)
-                .post(body.toString().toRequestBody("application/json".toMediaType()))
-                .build()
-            val r = Net.client.newCall(req).execute().body!!.string()
+            val r = OkHttpClient().newCall(
+                Request.Builder().url(url)
+                    .post(body.toString().toRequestBody("application/json".toMediaType()))
+                    .build()
+            ).execute().body!!.string()
             runOnUiThread { cb(JSONObject(r)) }
         }.start()
     }

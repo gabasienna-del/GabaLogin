@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -14,24 +15,21 @@ android {
         versionName "1.0"
     }
 
-    signingConfigs {
-        release {
-            storeFile file("../keystore.jks")
-            storePassword "gabalogin"
-            keyAlias "gaba"
-            keyPassword "gabalogin"
-        }
-    }
-
     buildTypes {
         release {
-            signingConfig signingConfigs.release
             minifyEnabled false
+            signingConfig null
         }
     }
+}
+
+repositories {
+    google()
+    mavenCentral()
 }
 
 dependencies {
     implementation "androidx.appcompat:appcompat:1.6.1"
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.10"
 }

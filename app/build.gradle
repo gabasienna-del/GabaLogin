@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -15,24 +14,28 @@ android {
         versionName "1.0"
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
+    signingConfigs {
+        release {
+            storeFile file("release.jks")
+            storePassword "123456"
+            keyAlias "gaba"
+            keyPassword "123456"
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            signingConfig null     // ← будет app-release-unsigned.apk
+            signingConfig signingConfigs.release
         }
     }
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
     implementation "androidx.appcompat:appcompat:1.6.1"
-    implementation "com.squareup.okhttp3:okhttp:4.12.0"
 }
